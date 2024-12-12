@@ -1,10 +1,10 @@
-import { Text, View, ScrollView, Image } from "react-native";
+import { Text, View, ScrollView, Image, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from "../../constants";
 import FormField from "../../components/FormField";
 import CustomButton from "../../components/CustomButton";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 
 const SignIn = () => {
   const [form, setForm] = useState({
@@ -20,6 +20,13 @@ const SignIn = () => {
     <SafeAreaView className="bg-primary h-full">
       <ScrollView>
         <View className="w-full justify-center items-center px-4 my-6 mt-1">
+          <Link href="/" style={{ position: "absolute", top: 20, left: 20 }}>
+            <Image
+              source={images.backArrow}
+              style={{ width: 40, height: 40 }} // Adjust the size as needed
+              resizeMode="contain"
+            />
+          </Link>
           <Image
             source={images.logo}
             className="w-[125px] h-[85px] relative top-[-10px]"

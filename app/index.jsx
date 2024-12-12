@@ -5,6 +5,15 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from "../constants";
 import CustomButton from "../components/CustomButton";
 import LogInButton from "../components/LogInButton";
+import CustomCarousel from "../components/CustomCarousel";
+
+const imageList = [
+  images.cards,
+  images.cards2,
+  images.cards3,
+  images.cards4,
+  images.cards5,
+];
 
 export default function App() {
   return (
@@ -16,11 +25,25 @@ export default function App() {
             className="w-[125px] h-[85px] relative top-[-10px]"
             resizeMode="contain"
           />
-          <Image
+
+          {/* <Image
             source={images.cards}
             className="w-[420px] h-[420px] relative top-[-65px]"
             resizeMode="contain"
-          />
+          /> */}
+          <View
+            style={{
+              width: 420,
+              height: 420,
+              justifyContent: "center",
+              alignItems: "center",
+              position: "relative",
+              top: -60,
+              left: 10,
+            }}
+          >
+            <CustomCarousel data={imageList} />
+          </View>
 
           <View className="relative mt-5">
             <Text className="text-[32px] font-pbold text-center text-[#373440] relative top-[-120px]">

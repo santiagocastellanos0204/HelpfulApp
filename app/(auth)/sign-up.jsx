@@ -21,6 +21,14 @@ const SignUp = () => {
     <SafeAreaView className="bg-primary h-full">
       <ScrollView>
         <View className="w-full justify-center items-center px-4 my-6 mt-1">
+          <Link href="/" style={{ position: "absolute", top: 20, left: 20 }}>
+            <Image
+              source={images.backArrow}
+              style={{ width: 40, height: 40 }} // Adjust the size as needed
+              resizeMode="contain"
+            />
+          </Link>
+
           <Image
             source={images.logo}
             className="w-[125px] h-[85px] relative top-[-10px]"
