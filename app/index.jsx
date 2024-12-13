@@ -6,6 +6,7 @@ import { images } from "../constants";
 import CustomButton from "../components/CustomButton";
 import LogInButton from "../components/LogInButton";
 import CustomCarousel from "../components/CustomCarousel";
+import { useGlobalContext } from "../context/GlobalProvider";
 
 const imageList = [
   images.cards,
@@ -16,6 +17,10 @@ const imageList = [
 ];
 
 export default function App() {
+  const { isLoading, isLoggedIn } = useGlobalContext();
+
+  if (!isLoading && isLoggedIn) return <Redirect href="/home" />;
+
   return (
     <SafeAreaView className="bg-primary h-full">
       <ScrollView>
