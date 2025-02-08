@@ -1,5 +1,5 @@
 import { Text, View, Image } from "react-native";
-import { Tabs, Redirect } from "expo-router";
+import { Tabs } from "expo-router";
 import { icons } from "../../constants";
 
 const TabIcon = ({ icon, color, name, focused }) => {
@@ -21,17 +21,23 @@ const TabIcon = ({ icon, color, name, focused }) => {
   );
 };
 
-const TabsLayout = () => {
+const TabsLayout = ({ darkMode }) => {
+  const tabStyles = {
+    backgroundColor: darkMode ? "#121212" : "#ffffff",
+    borderTopColor: darkMode ? "#333333" : "#cccccc",
+  };
+
   return (
     <>
       <Tabs
         screenOptions={{
           tabBarShowLabel: false,
-          tabBarActiveTintColor: "#83AA5D",
-          tabBarInactiveTintColor: "#CDCDE0",
+          tabBarActiveTintColor: darkMode ? "#8DDC80" : "#83AA5D",
+          tabBarInactiveTintColor: darkMode ? "#888888" : "#CDCDE0",
           tabBarStyle: {
             borderTopWidth: 1,
             height: 84,
+            ...tabStyles, // Apply dynamic styles
           },
         }}
       >

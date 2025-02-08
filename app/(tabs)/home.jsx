@@ -5,12 +5,14 @@ import {
   TouchableOpacity,
   Image,
   Pressable,
+  StatusBar,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { router } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 //import { useGlobalContext } from "../context/GlobalProvider";
-import { images, icons } from "../../constants";
+import { icons } from "../../constants";
+import TabsLayout from "../(tabs)/_layout";
 
 // Sample moods data (Replace with real state data)
 const moods = [
@@ -43,10 +45,9 @@ const journalEntries = [
 ];
 
 const Home = () => {
-  //const { user } = useGlobalContext();
-
   return (
     <SafeAreaView className="flex-1 bg-white px-4">
+      {/* Logo */}
       <View className="items-center mt-2">
         <Image source={icons.logo} className="w-12 h-12" resizeMode="contain" />
       </View>
@@ -64,40 +65,36 @@ const Home = () => {
         </View>
 
         {/* Right Side - Date & Icons */}
-        <View className="flex-1 flex-row justify-end items-center">
-          <View className="items-end">
-            {/* Date - Aligned to the Right */}
-            <Text className="text-[20px] font-psemibold self-start mb-2">
-              4/9/2025
-            </Text>
+        <View className="items-end">
+          {/* Date - Aligned to the Right */}
+          <Text className="text-[20px] font-psemibold mb-2">4/9/2025</Text>
 
-            {/* Icons Row */}
-            <View className="flex-row space-x-3">
-              <TouchableOpacity className="bg-white w-16 h-16 rounded-full shadow-md justify-center items-center">
-                <Image
-                  source={icons.moon}
-                  className="w-8 h-8"
-                  resizeMode="contain"
-                />
-              </TouchableOpacity>
+          {/* Icons Row - Positioned Below the Date */}
+          <View className="flex-row space-x-3">
+            <TouchableOpacity className="bg-white w-16 h-16 rounded-full shadow-md justify-center items-center">
+              <Image
+                source={icons.moon}
+                className="w-8 h-8"
+                resizeMode="contain"
+              />
+            </TouchableOpacity>
 
-              <TouchableOpacity
-                className="w-16 h-16 rounded-full shadow-md justify-center items-center"
-                style={{ backgroundColor: "#8DDC80" }}
-              >
-                <Image
-                  source={icons.customize}
-                  className="w-10 h-10"
-                  resizeMode="contain"
-                />
-              </TouchableOpacity>
-            </View>
+            <TouchableOpacity
+              className="w-16 h-16 rounded-full shadow-lg justify-center items-center"
+              style={{ backgroundColor: "#8DDC80" }}
+            >
+              <Image
+                source={icons.customize}
+                className="w-10 h-10"
+                resizeMode="contain"
+              />
+            </TouchableOpacity>
           </View>
         </View>
       </View>
 
       {/* Mood Selection */}
-      <Text className="text-xl font-psemibold text-center mt-5">
+      <Text className="text-[20px] font-psemibold text-center mt-5">
         How are you feeling today?{"\n"}
       </Text>
 
