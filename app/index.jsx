@@ -56,15 +56,15 @@ export default function App() {
             </Text>
           </View>
 
-          <Text className="text-[18px] font-pregular text-center text-[#373440] relative top-[-110px]">
+          <Text className="text-[16px] font-pregular text-center text-[#373440] relative top-[-110px]">
             Your path to mental wellness begins.
           </Text>
 
-          <Text className="text-[18px] font-pregular text-center text-[#373440] relative top-[-110px]">
+          <Text className="text-[16px] font-pregular text-center text-[#373440] relative top-[-110px]">
             Personalized support and mood
           </Text>
 
-          <Text className="text-[18px] font-pregular text-center text-[#373440] relative top-[-110px]">
+          <Text className="text-[16px] font-pregular text-center text-[#373440] relative top-[-110px]">
             tracking tailored to your well-being.
           </Text>
 
