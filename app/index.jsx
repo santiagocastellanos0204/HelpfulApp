@@ -79,14 +79,14 @@ export default function App() {
               style={{
                 width: 125,
                 height: 1.5,
-                backgroundColor: "#83AA5D",
+                backgroundColor: "#000000",
               }}
             />
             <Text className="text-[18px] font-psemibold text-center text-[#373440] mx-2">
               OR
             </Text>
             <View
-              style={{ width: 125, height: 1.5, backgroundColor: "#83AA5D" }}
+              style={{ width: 125, height: 1.5, backgroundColor: "#000000" }}
             />
           </View>
 
