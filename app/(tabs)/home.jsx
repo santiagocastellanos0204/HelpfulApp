@@ -142,7 +142,7 @@ const Home = () => {
         style={{ borderColor: "#8DDC80" }}
       >
         <Text
-          className={`text-center text-[24px] font-psemibold ${
+          className={`text-center text-[24px] font-psemibold -mt-2 ${
             darkMode ? "text-white" : "text-black"
           }`}
         >
