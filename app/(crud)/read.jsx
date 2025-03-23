@@ -99,6 +99,9 @@ const Read = () => {
   const handleUpdate = async () => {
     try {
       await updateEntry(entryId, form);
+      if (!form.mood || !form.title || !form.entry || !form.date) {
+        return Alert.alert("Please fill in all the fields");
+      }
       Alert.alert("Success", "Journal entry updated successfully");
 
       router.push("/(tabs)/journal");
