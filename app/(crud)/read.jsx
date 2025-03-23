@@ -97,13 +97,13 @@ const Read = () => {
 
   const handleUpdate = async () => {
     try {
-      await updateEntry(entryId, form);
       if (!form.mood || !form.title || !form.entry || !form.date) {
         return Alert.alert("Please fill in all the fields");
+      } else {
+        await updateEntry(entryId, form);
+        Alert.alert("Success", "Journal entry updated successfully");
+        router.push("/(tabs)/journal");
       }
-      Alert.alert("Success", "Journal entry updated successfully");
-
-      router.push("/(tabs)/journal");
     } catch (error) {
       Alert.alert("Error", "Failed to update journal entry");
     }
