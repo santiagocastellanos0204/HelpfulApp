@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-
 import { getCurrentUser } from "../lib/appwrite";
 
 const GlobalContext = createContext();
@@ -9,6 +8,7 @@ const GlobalProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     getCurrentUser()
@@ -37,6 +37,8 @@ const GlobalProvider = ({ children }) => {
         user,
         setUser,
         isLoading,
+        darkMode,
+        setDarkMode,
       }}
     >
       {children}

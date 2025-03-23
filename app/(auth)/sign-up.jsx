@@ -9,13 +9,13 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { images } from "../../constants";
+import { images, icons } from "../../constants";
 import FormField from "../../components/FormField";
 import CustomButton from "../../components/CustomButton";
 import { Link, router } from "expo-router";
 import { createUser } from "../../lib/appwrite";
-import { useGlobalContext } from "../../context/GlobalProvider";
 
+// Register page for a user to create an account
 const SignUp = () => {
   const [form, setForm] = useState({
     name: "",
@@ -45,7 +45,7 @@ const SignUp = () => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }} className="bg-primary h-full">
+    <SafeAreaView style={{ flex: 1 }} className="bg-white h-full">
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={{ flex: 1 }}
@@ -61,16 +61,15 @@ const SignUp = () => {
             </Link>
 
             <Image
-              source={images.logo}
-              className="w-[125px] h-[85px] relative top-[-10px]"
+              source={icons.logo}
+              className="w-12 h-12"
               resizeMode="contain"
             />
-
-            <Text className="text-[32px] text-semibold font-psemibold">
+            <Text className="text-[32px] text-semibold font-psemibold mt-8">
               Create an Account
             </Text>
 
-            <Text className="text-center text-[#373440] mt-2 text-[18px]">
+            <Text className="text-center text-[#373440] mt-2 text-[16px] font-pmedium">
               Please fill out the fields below to{"\n"}create an account with us
             </Text>
 
@@ -79,7 +78,7 @@ const SignUp = () => {
                 title="Name"
                 value={form.name}
                 handleChangeText={(e) => setForm({ ...form, name: e })}
-                otherStyles="mt-7 w-[325px]"
+                otherStyles="mt-7"
                 placeholder="Name"
               />
 
@@ -87,7 +86,7 @@ const SignUp = () => {
                 title="Email"
                 value={form.email}
                 handleChangeText={(e) => setForm({ ...form, email: e })}
-                otherStyles="mt-7 w-[325px]"
+                otherStyles="mt-7 w-full"
                 keyboardType="email-address"
                 placeholder="Email"
               />
@@ -96,7 +95,7 @@ const SignUp = () => {
                 title="Password"
                 value={form.password}
                 handleChangeText={(e) => setForm({ ...form, password: e })}
-                otherStyles="mt-7 w-[325px]"
+                otherStyles="mt-7"
                 placeholder="Password"
               />
             </View>
@@ -114,7 +113,7 @@ const SignUp = () => {
               </Text>
               <Link
                 href="/sign-in"
-                className="text-lg text-[#557f2b] font-psemibold"
+                className="text-lg text-[#000000] font-psemibold"
               >
                 <Text style={{ textDecorationLine: "underline" }}>Sign In</Text>
               </Link>

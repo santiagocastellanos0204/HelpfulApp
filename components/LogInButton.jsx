@@ -12,13 +12,12 @@ const LogInButton = ({
     <TouchableOpacity
       onPress={handlePress}
       activeOpacity={0.7}
-      style={{ width: 300 }}
-      className={`bg-[#FFFFFF] rounded-3xl min-h-[62px] justify-center items-center ${containerStyles} ${
+      className={`bg-[#000000] rounded-3xl min-h-[62px] justify-center items-center w-full ${containerStyles} ${
         isLoading ? "opacity-50" : ""
       }`}
       disabled={isLoading}
     >
-      <Text className={`text-[#6d8f4b] font-pbold text-[18px] ${textStyles}`}>
+      <Text className={`text-[#FFFFFF] font-pbold text-[18px] ${textStyles}`}>
         {title}
       </Text>
     </TouchableOpacity>

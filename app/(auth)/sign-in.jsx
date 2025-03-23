@@ -9,13 +9,14 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { images } from "../../constants";
+import { images, icons } from "../../constants";
 import FormField from "../../components/FormField";
 import CustomButton from "../../components/CustomButton";
 import { Link, router } from "expo-router";
 import { getCurrentUser, signIn } from "../../lib/appwrite";
 import { useGlobalContext } from "../../context/GlobalProvider";
 
+// Sign in page for a user to log in
 const SignIn = () => {
   const { setUser, setIsLoggedIn } = useGlobalContext();
 
@@ -48,7 +49,7 @@ const SignIn = () => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }} className="bg-primary h-full">
+    <SafeAreaView style={{ flex: 1 }} className="bg-white h-full">
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={{ flex: 1 }}
@@ -63,16 +64,16 @@ const SignIn = () => {
               />
             </Link>
             <Image
-              source={images.logo}
-              className="w-[125px] h-[85px] relative top-[-10px]"
+              source={icons.logo}
+              className="w-12 h-12"
               resizeMode="contain"
             />
 
-            <Text className="text-[36px] text-semibold font-psemibold">
+            <Text className="text-[36px] text-semibold font-psemibold mt-8">
               Log In
             </Text>
 
-            <Text className="text-center text-[#373440] mt-2 text-[18px]">
+            <Text className="text-center text-[#373440] mt-2 text-[16px] font-pmedium">
               We are glad to have you back{"\n"}Please enter your credentials
               {"\n"}
             </Text>
@@ -81,7 +82,7 @@ const SignIn = () => {
               title="Email"
               value={form.email}
               handleChangeText={(e) => setForm({ ...form, email: e })}
-              otherStyles="mt-7 w-[325px]"
+              otherStyles="mt-4"
               keyboardType="email-address"
               placeholder="Email"
             />
@@ -90,7 +91,7 @@ const SignIn = () => {
               title="Password"
               value={form.password}
               handleChangeText={(e) => setForm({ ...form, password: e })}
-              otherStyles="mt-7 w-[325px]"
+              otherStyles="mt-7"
               secureTextEntry
               placeholder="Password"
             />
@@ -108,7 +109,7 @@ const SignIn = () => {
               </Text>
               <Link
                 href="/sign-up"
-                className="text-lg text-[#557f2b] font-psemibold"
+                className="text-lg text-[#000000] font-psemibold"
               >
                 <Text style={{ textDecorationLine: "underline" }}>Sign Up</Text>
               </Link>

@@ -1,156 +1,161 @@
-import {
-  FlatList,
-  Text,
-  View,
-  TouchableOpacity,
-  Image,
-  Pressable,
-  StatusBar,
-} from "react-native";
-import React, { useState } from "react";
-import { router } from "expo-router";
+import { Text, View, TouchableOpacity, Image, StatusBar } from "react-native";
+import React, { useEffect } from "react";
+import { useRouter } from "expo-router"; // Correct import for useRouter
 import { SafeAreaView } from "react-native-safe-area-context";
-//import { useGlobalContext } from "../context/GlobalProvider";
 import { icons } from "../../constants";
-import TabsLayout from "../(tabs)/_layout";
+import { useGlobalContext } from "../../context/GlobalProvider";
 
 // Sample moods data (Replace with real state data)
 const moods = [
-  { id: 1, emoji: icons.cheery },
-  { id: 2, emoji: icons.happy },
-  { id: 3, emoji: icons.calm },
-  { id: 4, emoji: icons.neutral },
-  { id: 5, emoji: icons.angry },
-  { id: 6, emoji: icons.anxious },
-  { id: 7, emoji: icons.sad },
-  { id: 8, emoji: icons.depressed },
-];
-
-// Sample journal entries (Replace with real API data)
-const journalEntries = [
   {
     id: 1,
-    title: "Productive Day",
-    date: "4/9/25",
-    description: "Today was a great day, I started off...",
-    emoji: icons.happy,
+    emoji:
+      "https://cloud.appwrite.io/v1/storage/buckets/675b6e0c000017f04601/files/67dcce92001ca6767d09/view?project=673562340020d63cd018&mode=admin",
   },
   {
     id: 2,
-    title: "A Very Cheery Day",
-    date: "4/8/25",
-    description: "I got an A on my final exam and...",
-    emoji: icons.cheery,
+    emoji:
+      "https://cloud.appwrite.io/v1/storage/buckets/675b6e0c000017f04601/files/67dccecc0038fe39393b/view?project=673562340020d63cd018&mode=admin",
+  },
+  {
+    id: 3,
+    emoji:
+      "https://cloud.appwrite.io/v1/storage/buckets/675b6e0c000017f04601/files/67dcceb30020c32f30da/view?project=673562340020d63cd018&mode=admin",
+  },
+  {
+    id: 4,
+    emoji:
+      "https://cloud.appwrite.io/v1/storage/buckets/675b6e0c000017f04601/files/67dcced4002c8265129f/view?project=673562340020d63cd018&mode=admin",
+  },
+  {
+    id: 5,
+    emoji:
+      "https://cloud.appwrite.io/v1/storage/buckets/675b6e0c000017f04601/files/67dccebd0031c0ae011d/view?project=673562340020d63cd018&mode=admin",
+  },
+  {
+    id: 6,
+    emoji:
+      "https://cloud.appwrite.io/v1/storage/buckets/675b6e0c000017f04601/files/67dccea60030f3f01177/view?project=673562340020d63cd018&mode=admin",
+  },
+  {
+    id: 7,
+    emoji:
+      "https://cloud.appwrite.io/v1/storage/buckets/675b6e0c000017f04601/files/67dccedb00152547acab/view?project=673562340020d63cd018&mode=admin",
+  },
+  {
+    id: 8,
+    emoji:
+      "https://cloud.appwrite.io/v1/storage/buckets/675b6e0c000017f04601/files/67dccec50008c8cab8f2/view?project=673562340020d63cd018&mode=admin",
   },
 ];
 
+// Format Date Function
+const getFormattedDate = () => {
+  const date = new Date();
+  const options = { weekday: "long", month: "long", day: "numeric" };
+  return date.toLocaleDateString("en-US", options);
+};
+
+// Home Page of the application
 const Home = () => {
+  const router = useRouter(); // Initialize the router
+  const { user, darkMode, setDarkMode } = useGlobalContext();
+
+  useEffect(() => {
+    // Dynamically update the status bar when darkMode changes
+    StatusBar.setBarStyle(darkMode ? "light-content" : "dark-content");
+  }, [darkMode]);
+
   return (
-    <SafeAreaView className="flex-1 bg-white px-4">
-      {/* Logo */}
-      <View className="items-center mt-2">
-        <Image source={icons.logo} className="w-12 h-12" resizeMode="contain" />
+    <SafeAreaView
+      className={`flex-1 px-4 ${darkMode ? "bg-[#22222c]" : "bg-[#ececec]"}`}
+    >
+      <View className="relative flex-row justify-center mt-2">
+        {/* Centered Logo */}
+        <Image
+          source={darkMode ? icons.whitelogo : icons.logo}
+          className="w-12 h-12"
+          resizeMode="contain"
+        />
+
+        {/* Moon Button in Top-Right */}
+        <TouchableOpacity
+          className={`w-14 h-14 rounded-full shadow-md justify-center items-center absolute right-4 ${
+            darkMode ? "bg-[#e0e0e0]" : "bg-[#3b3b3b]"
+          }`}
+          onPress={() => setDarkMode(!darkMode)}
+        >
+          <Image
+            source={darkMode ? icons.moon : icons.whitemoon}
+            className="w-7 h-7"
+            resizeMode="contain"
+          />
+        </TouchableOpacity>
       </View>
 
-      {/* Header */}
-      <View className="flex-row justify-between items-center w-full mt-4 px-2">
-        {/* Left Side - Welcome Text */}
-        <View>
-          <Text className="text-[36px] font-psemibold leading-[40px]">
-            Welcome,
-          </Text>
-          <Text className="text-[36px] font-psemibold leading-[40px]">
-            Robert
-          </Text>
-        </View>
-
-        {/* Right Side - Date & Icons */}
-        <View className="items-end">
-          {/* Date - Aligned to the Right */}
-          <Text className="text-[20px] font-psemibold mb-2">4/9/2025</Text>
-
-          {/* Icons Row - Positioned Below the Date */}
-          <View className="flex-row space-x-3">
-            <TouchableOpacity className="bg-white w-16 h-16 rounded-full shadow-md justify-center items-center">
-              <Image
-                source={icons.moon}
-                className="w-8 h-8"
-                resizeMode="contain"
-              />
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              className="w-16 h-16 rounded-full shadow-lg justify-center items-center"
-              style={{ backgroundColor: "#8DDC80" }}
-            >
-              <Image
-                source={icons.customize}
-                className="w-10 h-10"
-                resizeMode="contain"
-              />
-            </TouchableOpacity>
-          </View>
-        </View>
-      </View>
+      {/* Date & Welcome Message */}
+      <Text
+        className={`text-center text-[16px] font-pregular mt-4 ${
+          darkMode ? "text-gray-400" : "text-gray-700"
+        }`}
+      >
+        {getFormattedDate()}
+      </Text>
+      <Text
+        className={`text-center text-[28px] font-psemibold mt-1 ${
+          darkMode ? "text-white" : "text-black"
+        }`}
+      >
+        Welcome, {user.name.split(" ")[0]}
+      </Text>
 
       {/* Mood Selection */}
-      <Text className="text-[20px] font-psemibold text-center mt-5">
-        How are you feeling today?{"\n"}
+      <Text
+        className={`text-[20px] font-psemibold text-center mt-5 ${
+          darkMode ? "text-white" : "text-black"
+        }`}
+      >
+        How are you feeling?{"\n"}
       </Text>
 
       <View className="flex-row flex-wrap justify-center gap-7">
         {moods.map((mood) => (
           <TouchableOpacity
             key={mood.id}
-            className={`w-16 h-16 rounded-full justify-center items-center`}
+            className="w-16 h-16 rounded-full justify-center items-center"
+            onPress={() => {
+              router.push(`../(crud)/create?moodId=${mood.id}`);
+            }}
           >
             <Image
-              source={mood.emoji}
-              className="w-16 h-216"
+              source={{ uri: mood.emoji }}
+              className="w-16 h-16"
               resizeMode="contain"
             />
           </TouchableOpacity>
         ))}
       </View>
 
-      {/* Journals Section */}
-      <Pressable
-        className="rounded-3xl p-4 mt-5 opacity-90"
-        style={{ backgroundColor: "#8DDC80" }}
-        onPress={() => router.push("/journal")} // Navigates to the Journal page
+      {/* Quote of the Day Section */}
+      <View
+        className="mt-10 p-10 w-full rounded-3xl border-8 justify-center items-center text-center"
+        style={{ borderColor: "#8DDC80" }}
       >
-        <Text className="text-[24px] font-psemibold text-center">Journals</Text>
-
-        <FlatList
-          data={journalEntries}
-          keyExtractor={(item) => item.id.toString()}
-          renderItem={({ item }) => (
-            <View className="bg-white rounded-xl p-4 flex-row items-center mt-3 shadow-sm opacity-90 relative">
-              {/* Mood Image */}
-              <View className="w-10 h-10 rounded-full justify-center items-center">
-                <Image
-                  source={item.emoji}
-                  className="w-13 h-10"
-                  resizeMode="contain"
-                />
-              </View>
-
-              {/* Text Content */}
-              <View className="flex-1 ml-4">
-                <Text className="text-[16px] font-psemibold">{item.title}</Text>
-                <Text className="text-[11px] text-gray-600 font-pregular mt-1">
-                  {item.description}
-                </Text>
-              </View>
-
-              {/* Date - Positioned at Top Right */}
-              <Text className="absolute top-2 right-3 text-[11px] text-gray-500 font-pregular">
-                {item.date}
-              </Text>
-            </View>
-          )}
-        />
-      </Pressable>
+        <Text
+          className={`text-center text-[24px] font-psemibold ${
+            darkMode ? "text-white" : "text-black"
+          }`}
+        >
+          Quote of the Day
+        </Text>
+        <Text
+          className={`text-center text-[16px] mt-4 font-pregular ${
+            darkMode ? "text-white" : "text-black"
+          }`}
+        >
+          "It always seems impossible until it's done" - Nelson Mandela
+        </Text>
+      </View>
     </SafeAreaView>
   );
 };

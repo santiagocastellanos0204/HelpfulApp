@@ -14,8 +14,9 @@ import anxious from "../assets/icons/anxious.png";
 import sad from "../assets/icons/sad.png";
 import depressed from "../assets/icons/depressed.png";
 import moon from "../assets/icons/moon.png";
+import whitemoon from "../assets/icons/whitemoon.png";
 import logo from "../assets/icons/helpfulogo.png";
-import customize from "../assets/icons/customize.png";
+import whitelogo from "../assets/icons/whitelogo.png";
 
 export default {
   home,
@@ -34,6 +35,7 @@ export default {
   anxious,
   neutral,
   moon,
-  customize,
+  whitemoon,
   logo,
+  whitelogo,
 };
