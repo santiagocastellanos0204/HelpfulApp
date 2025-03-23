@@ -5,7 +5,6 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { images, icons } from "../constants";
 import CustomButton from "../components/CustomButton";
 import LogInButton from "../components/LogInButton";
-import CustomCarousel from "../components/CustomCarousel";
 import { useGlobalContext } from "../context/GlobalProvider";
 
 // Root page that asks the user to sign in or register for an account

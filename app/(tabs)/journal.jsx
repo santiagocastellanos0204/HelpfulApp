@@ -5,9 +5,8 @@ import {
   TouchableOpacity,
   FlatList,
   RefreshControl,
-  Alert,
 } from "react-native";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { icons } from "../../constants";
 import JournalEntry from "../../components/JournalEntry";
