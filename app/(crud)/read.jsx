@@ -201,11 +201,14 @@ const Read = () => {
             handleChangeText={(text) => setForm({ ...form, entry: text })}
             otherStyles="mt-4"
           />
-        </KeyboardAvoidingView>
 
-        <View className="mt-7 space-y-2">
-          <CustomButton title="Save" handlePress={handleUpdate}></CustomButton>
-        </View>
+          <View className="mt-7 space-y-2">
+            <CustomButton
+              title="Save"
+              handlePress={handleUpdate}
+            ></CustomButton>
+          </View>
+        </KeyboardAvoidingView>
       </ScrollView>
     </SafeAreaView>
   );

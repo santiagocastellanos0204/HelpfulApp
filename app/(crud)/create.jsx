@@ -194,15 +194,15 @@ const Create = () => {
             handleChangeText={(e) => setForm({ ...form, entry: e })}
             otherStyles="mt-4"
           />
-        </KeyboardAvoidingView>
 
-        <View className="mt-7 space-y-2">
-          <CustomButton
-            title="Add Mood Entry"
-            handlePress={submit}
-            isLoading={uploading}
-          ></CustomButton>
-        </View>
+          <View className="mt-7 space-y-2">
+            <CustomButton
+              title="Add Mood Entry"
+              handlePress={submit}
+              isLoading={uploading}
+            ></CustomButton>
+          </View>
+        </KeyboardAvoidingView>
       </ScrollView>
     </SafeAreaView>
   );
