@@ -17,6 +17,10 @@ import moon from "../assets/icons/moon.png";
 import whitemoon from "../assets/icons/whitemoon.png";
 import logo from "../assets/icons/helpfulogo.png";
 import whitelogo from "../assets/icons/whitelogo.png";
+import lock from "../assets/icons/lock.png";
+import unlock from "../assets/icons/unlock.png";
+import whitelock from "../assets/icons/whitelock.png";
+import whiteunlock from "../assets/icons/whiteunlock.png";
 
 export default {
   home,
@@ -38,4 +42,8 @@ export default {
   whitemoon,
   logo,
   whitelogo,
+  lock,
+  unlock,
+  whitelock,
+  whiteunlock,
 };
