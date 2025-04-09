@@ -179,6 +179,7 @@ const Read = () => {
             />
           </View>
         )}
+
         <FormField
           title="Title"
           placeholder="Title for this entry..."
