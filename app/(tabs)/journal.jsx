@@ -128,7 +128,7 @@ const Journal = () => {
           <View className="flex-row justify-end px-4 -mt-16">
             <TouchableOpacity
               onPress={() => setLocked(true)}
-              className="px-4 py-2 rounded-2xl mt-0"
+              className="px-4 py-2 rounded-2xl -mt-2"
             >
               <Image
                 source={darkMode ? icons.whiteunlock : icons.unlock}
