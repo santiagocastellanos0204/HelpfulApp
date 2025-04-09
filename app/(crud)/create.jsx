@@ -173,6 +173,7 @@ const Create = () => {
             />
           </View>
         )}
+
         {/* Form Fields */}
         <FormField
           title="Title"
@@ -182,13 +183,18 @@ const Create = () => {
           otherStyles="mt-4"
         />
 
-        <EntryField
-          title="Journal Entry"
-          value={form.entry}
-          placeholder="Write how you are feeling..."
-          handleChangeText={(e) => setForm({ ...form, entry: e })}
-          otherStyles="mt-4"
-        />
+        <KeyboardAvoidingView
+          behavior={Platform.OS === "ios" ? "padding" : "height"}
+          style={{ flex: 1 }}
+        >
+          <EntryField
+            title="Journal Entry"
+            value={form.entry}
+            placeholder="Write how you are feeling..."
+            handleChangeText={(e) => setForm({ ...form, entry: e })}
+            otherStyles="mt-4"
+          />
+        </KeyboardAvoidingView>
 
         <View className="mt-7 space-y-2">
           <CustomButton

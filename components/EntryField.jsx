@@ -25,8 +25,9 @@ const EntryField = ({
       </Text>
 
       <View
-        className="w-full h-48 px-4 bg-white rounded-3xl border-[#8DDC80] flex-1 text-[#373440] font-pmedium text-base"
+        className="w-full px-4 bg-white rounded-3xl border-[#8DDC80] flex-1 text-[#373440] font-pmedium text-base"
         style={{
+          minHeight: 200,
           backgroundColor: darkMode ? "#373440" : "#FFFFFF",
           borderWidth: 3,
         }}
@@ -40,7 +41,11 @@ const EntryField = ({
           multiline={true}
           textAlignVertical="top"
           numberOfLines={8}
-          style={{ paddingTop: 12, color: darkMode ? "#FFFFFF" : "#373440" }}
+          style={{
+            minHeight: 150,
+            paddingTop: 12,
+            color: darkMode ? "#FFFFFF" : "#373440",
+          }}
           secureTextEntry={title === "Password" && !showPassword}
         />
       </View>

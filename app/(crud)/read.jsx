@@ -179,7 +179,6 @@ const Read = () => {
             />
           </View>
         )}
-
         <FormField
           title="Title"
           placeholder="Title for this entry..."
@@ -187,17 +186,22 @@ const Read = () => {
           handleChangeText={(text) => setForm({ ...form, title: text })}
           otherStyles="mt-4"
         />
-        <EntryField
-          title="Journal Entry"
-          placeholder="Write your journal entry..."
-          multiline={true}
-          numberOfLines={8}
-          textAlignVertical="top"
-          value={form.entry}
-          handleChangeText={(text) => setForm({ ...form, entry: text })}
-          otherStyles="mt-4"
-        />
 
+        <KeyboardAvoidingView
+          behavior={Platform.OS === "ios" ? "padding" : "height"}
+          style={{ flex: 1 }}
+        >
+          <EntryField
+            title="Journal Entry"
+            placeholder="Write your journal entry..."
+            multiline={true}
+            numberOfLines={8}
+            textAlignVertical="top"
+            value={form.entry}
+            handleChangeText={(text) => setForm({ ...form, entry: text })}
+            otherStyles="mt-4"
+          />
+        </KeyboardAvoidingView>
         <View className="mt-7 space-y-2">
           <CustomButton title="Save" handlePress={handleUpdate}></CustomButton>
         </View>
